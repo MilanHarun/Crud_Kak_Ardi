@@ -1,0 +1,18 @@
+<?php
+
+use App\Http\Controllers\KategoriController;
+//panggil controller
+use App\Models\Kategori;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+Route::get('/', function () {
+    return view('auth.login');
+});
+
+
+Auth::routes();
+
+//menambakan route kategoris
+Route::resource('kategoris', KategoriController::class);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
