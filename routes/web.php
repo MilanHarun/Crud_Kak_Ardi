@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\KategoriController;
 //panggil controller
 use App\Models\Kategori;
@@ -14,5 +15,7 @@ Auth::routes();
 
 //menambakan route kategoris
 Route::resource('kategoris', KategoriController::class);
-
+Route::resource('bukus', BukuController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
