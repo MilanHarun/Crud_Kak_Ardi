@@ -15,7 +15,9 @@ Auth::routes();
 
 //menambakan route kategoris
 Route::resource('kategoris', KategoriController::class);
+
 Route::resource('bukus', BukuController::class);
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

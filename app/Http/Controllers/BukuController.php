@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Buku;
 use Illuminate\Http\Request;
+use App\Http\Requests\BukuStoreRequest;
+use App\Http\Requests\BukuUpdateRequest;
+
 
 class BukuController extends Controller
 {
@@ -12,7 +15,9 @@ class BukuController extends Controller
      */
     public function index()
     {
-        $b
+        $bukus = Buku::latest()->paginate(5);
+        return view('bukus.index',compact('bukus'))
+        ->with( (request()->input('page', 1) - 2) *5);
     }
 
     /**
@@ -20,15 +25,17 @@ class BukuController extends Controller
      */
     public function create()
     {
-        //
+        return view('bukus.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BukuStoreRequest $request)
     {
-        //
+        buku::create($request->validated());
+        return redirect()->route('bukus.index')
+        ->with('success','Buku created successfully');
     }
 
     /**
@@ -36,7 +43,7 @@ class BukuController extends Controller
      */
     public function show(Buku $buku)
     {
-        //
+        return view('bukus.show',compact('buku'));
     }
 
     /**
@@ -44,15 +51,18 @@ class BukuController extends Controller
      */
     public function edit(Buku $buku)
     {
-        //
+        return view('bukus.edit',compact('buku'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Buku $buku)
+    public function update(BukuUpdateRequest $request, Buku $buku)
     {
-        //
+        $buku->update($request->validated);
+        return redirect()->route('bukus.index')
+        ->with('success','Buku updated successfully');
+
     }
 
     /**
@@ -60,6 +70,8 @@ class BukuController extends Controller
      */
     public function destroy(Buku $buku)
     {
-        //
+        $buku->delete();
+        return redirect()->route('bukus.index')
+        ->with('success','Buku deleted successfully');
     }
 }

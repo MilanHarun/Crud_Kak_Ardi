@@ -6,7 +6,7 @@ use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Http\Requests\KategoriStoreRequest;
 use App\Http\Requests\KategoriUpdateRequest;
-
+    
 
 class KategoriController extends Controller
 {
