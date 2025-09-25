@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Kategori') }}</div>
+                <div class="card-header">{{ __('buku') }}</div>
 
                 <div class="carrd-body">
 
@@ -35,13 +35,13 @@
                                     <div class="modal-body">
                                         <form action="{{ route('bukus.store') }}" method="POST">
                                             @csrf
-                                            <label for="inputkategori" class="form-label"><strong>Kategori</strong></label>
-                                            <input type="text" name="kategori" class="form-control" @error('kategori')is-invalid @enderror >
+                                            <label for="inputbuku" class="form-label"><strong>Buku</strong></label>
+                                            <input type="text" name="buku" class="form-control" @error('buku')is-invalid @enderror >
 
                                     </div>
                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
                         <a href="{{ url('bukus/create') }}" class="btn btn-primary">
-                            Tambah Data
+                            Tambah Buku
                         </a>
                         </div>
                                     </form>
@@ -63,17 +63,17 @@
                             $i = 1;
                         @endphp
                     <tbody>
-                        @forelse ($kategoris as $kategori)
+                        @forelse ($bukus as $buku)
                         <tr>
                             <td>{{ $i++ }}</td>
-                            <td>{{ $kategori->kategori }}</td>
+                            <td>{{ $bukus->buku }}</td>
                             <td>
-                                <form action="{{ route('bukus.destroy',$kategori->id) }}" method="POST">
-                                    <a href="{{ route('bukus.show',$kategori->id) }}" class="btn btn-info btn-sm">show</a>
-                                    <a href="{{ route('bukus.edit',$kategori->id) }}" class="btn btn-warning btn-sm">edit</a>
+                                <form action="{{ route('bukus.destroy',$buku->id) }}" method="POST">
+                                    <a href="{{ route('bukus.show',$buku->id) }}" class="btn btn-info btn-sm">show</a>
+                                    <a href="{{ route('bukus.edit',$buku->id) }}" class="btn btn-warning btn-sm">edit</a>
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('are you sure want to delete this {{$kategori->kategori}} ?');">Delete</button>
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('are you sure want to delete {{$buku->buku}} ?');">Delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -85,7 +85,7 @@
                     </tbody>
                 </table>
 
-                {{ $kategoris->links() }}
+                {{ $bukus->links() }}
 
 
                 </div>

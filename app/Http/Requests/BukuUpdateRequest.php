@@ -22,7 +22,7 @@ class BukuUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'buku' => 'required'
         ];
     }
 }

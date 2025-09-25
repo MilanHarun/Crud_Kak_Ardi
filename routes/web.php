@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\BukuController;
 use App\Http\Controllers\KategoriController;
-//panggil controller
+use App\Http\Controllers\BukuController;
+// panggil controller
 use App\Models\Kategori;
+use App\Models\Buku;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 Route::get('/', function () {

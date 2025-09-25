@@ -33,9 +33,9 @@ class BukuController extends Controller
      */
     public function store(BukuStoreRequest $request)
     {
-        buku::create($request->validated());
-        return redirect()->route('bukus.index')
-        ->with('success','Buku created successfully');
+       buku::create($request->validated());
+       return redirect()->route('bukus.index')
+       ->with('success','Buku created successfully.');
     }
 
     /**
