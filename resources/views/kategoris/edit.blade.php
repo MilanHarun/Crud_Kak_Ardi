@@ -16,7 +16,7 @@
                         </div>
 
                         <form action="{{Route('kategoris.update',$kategori->id) }}" method="POST">
-
+                            
                         @csrf
                         @method('PUT')
 

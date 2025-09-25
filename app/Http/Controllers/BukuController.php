@@ -59,7 +59,7 @@ class BukuController extends Controller
      */
     public function update(BukuUpdateRequest $request, Buku $buku)
     {
-        $buku->update($request->validated);
+        $buku->update($request->validated());
         return redirect()->route('bukus.index')
         ->with('success','Buku updated successfully');
 

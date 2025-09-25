@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Kategori') }}</div>
+                <div class="card-header">{{ ('Kategori') }}</div>
 
                 <div class="carrd-body">
 
@@ -69,8 +69,8 @@
                             <td>{{ $kategori->kategori }}</td>
                             <td>
                                 <form action="{{ route('kategoris.destroy',$kategori->id) }}" method="POST">
-                                    <a href="{{ route('kategoris.show',$kategori->id) }}" class="btn btn-info btn-sm">show</a>
-                                    <a href="{{ route('kategoris.edit',$kategori->id) }}" class="btn btn-warning btn-sm">edit</a>
+                                    <a href="{{ route('kategoris.show',$kategori->id) }}" class="btn btn-info btn-sm">Show</a>
+                                    <a href="{{ route('kategoris.edit',$kategori->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('are you sure want to delete this {{$kategori->kategori}} ?');">Delete</button>

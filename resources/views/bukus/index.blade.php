@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('buku') }}</div>
+                <div class="card-header">{{ ('buku') }}</div>
 
                 <div class="carrd-body">
 
@@ -66,11 +66,11 @@
                         @forelse ($bukus as $buku)
                         <tr>
                             <td>{{ $i++ }}</td>
-                            <td>{{ $bukus->buku }}</td>
+                            <td>{{ $buku->buku }}</td>
                             <td>
                                 <form action="{{ route('bukus.destroy',$buku->id) }}" method="POST">
-                                    <a href="{{ route('bukus.show',$buku->id) }}" class="btn btn-info btn-sm">show</a>
-                                    <a href="{{ route('bukus.edit',$buku->id) }}" class="btn btn-warning btn-sm">edit</a>
+                                    <a href="{{ route('bukus.show',$buku->id) }}" class="btn btn-info btn-sm">Show</a>
+                                    <a href="{{ route('bukus.edit',$buku->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('are you sure want to delete {{$buku->buku}} ?');">Delete</button>
