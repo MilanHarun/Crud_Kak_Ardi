@@ -22,7 +22,11 @@ class BukuUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'buku' => 'required'
+            'buku' => 'required',
+            'pengarang' => 'required',
+            'penerbit' => 'required',
+            'kategori' => 'required',
+            'peminjam' => 'required',
         ];
     }
 }

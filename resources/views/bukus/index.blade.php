@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ ('Dashboard') }}</div>
 
                 <div class="card-body">
 
@@ -96,7 +96,7 @@
                                     </td>
                                 </tr>
                             @empty
-                                <td colspan="6">Yahhh... Belum ada datanya nih😊</td>
+                                <td colspan="6">Yahhh... Belum ada datanya nih</td>
                             @endforelse
                         </tbody>
                      </table>

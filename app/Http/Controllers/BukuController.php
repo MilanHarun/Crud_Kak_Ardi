@@ -62,7 +62,7 @@ class BukuController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Buku $buku)
+   public function edit(Buku $buku)
     {
         return view('bukus.edit', compact('buku'));
     }
@@ -76,8 +76,7 @@ class BukuController extends Controller
 
         return redirect()->route('bukus.index')
             ->with('success', 'Yeayy, Buku Berhasil di ubah😊!');
-    }
-
+}
     /**
      * Remove the specified resource from storage.
      */

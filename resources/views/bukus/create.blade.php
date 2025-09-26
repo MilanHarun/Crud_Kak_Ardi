@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Tambah Buku') }}</div>
+                <div class="card-header">{{ ('Tambah Buku') }}</div>
 
                 <div class="card-body">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
