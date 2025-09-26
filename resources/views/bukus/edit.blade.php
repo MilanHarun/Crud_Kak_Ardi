@@ -30,11 +30,41 @@
                                        id="updatebuku"
                                        value="{{ old('buku', $buku->buku) }}"
                                        required>
+
+                                <input type="text"
+                                       class="form-control @error('buku') is-invalid @enderror"
+                                       name="buku"
+                                       id="updatebuku"
+                                       value="{{ old('buku', $buku->pengarang) }}"
+                                       required>
+
+                                <input type="text"
+                                       class="form-control @error('buku') is-invalid @enderror"
+                                       name="buku"
+                                       id="updatebuku"
+                                       value="{{ old('buku', $buku->penerbit) }}"
+                                       required>
+
+                                       <input type="text"
+                                       class="form-control @error('buku') is-invalid @enderror"
+                                       name="buku"
+                                       id="updatebuku"
+                                       value="{{ old('buku', $buku->kategori) }}"
+                                       required>
+
+                                       <input type="text"
+                                       class="form-control @error('buku') is-invalid @enderror"
+                                       name="buku"
+                                       id="updatebuku"
+                                       value="{{ old('buku', $buku->peminjam) }}"
+                                       required>
+
+
                                 @error('buku')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                        </div>
+                        </div>
                         <button type="submit" class="btn btn-warning">Edit</button>
 
 

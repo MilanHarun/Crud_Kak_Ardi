@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\BukuStoreRequest;
 use App\Http\Requests\BukuUpdateRequest;
 
-
 class BukuController extends Controller
 {
     /**
@@ -16,8 +15,8 @@ class BukuController extends Controller
     public function index()
     {
         $bukus = Buku::latest()->paginate(5);
-        return view('bukus.index',compact('bukus'))
-        ->with( (request()->input('page', 1) - 2) *5);
+        return view('bukus.index', compact('bukus'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -31,11 +30,25 @@ class BukuController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(BukuStoreRequest $request)
+    public function store(Request $request)
     {
-       buku::create($request->validated());
-       return redirect()->route('bukus.index')
-       ->with('success','Buku created successfully.');
+        $request->validate([
+            'buku' => 'required|string|',
+            'pengarang' => 'required|string',
+            'penerbit' => 'required|string',
+            'kategori' => 'required|string',
+            'peminjam' => 'required|string',
+        ]);
+
+        Buku::create([
+            'buku' => $request->buku,
+            'pengarang' => $request->pengarang,
+            'penerbit' => $request->penerbit,
+            'kategori' => $request->kategori,
+            'peminjam' => $request->peminjam,
+        ]);
+
+        return redirect()->route('bukus.index')->with('success', 'Buku berhasil ditambahkan!');
     }
 
     /**
@@ -43,7 +56,7 @@ class BukuController extends Controller
      */
     public function show(Buku $buku)
     {
-        return view('bukus.show',compact('buku'));
+        return view('bukus.show', compact('buku'));
     }
 
     /**
@@ -51,7 +64,7 @@ class BukuController extends Controller
      */
     public function edit(Buku $buku)
     {
-        return view('bukus.edit',compact('buku'));
+        return view('bukus.edit', compact('buku'));
     }
 
     /**
@@ -60,9 +73,9 @@ class BukuController extends Controller
     public function update(BukuUpdateRequest $request, Buku $buku)
     {
         $buku->update($request->validated());
-        return redirect()->route('bukus.index')
-        ->with('success','Buku updated successfully');
 
+        return redirect()->route('bukus.index')
+            ->with('success', 'Yeayy, Buku Berhasil di ubah😊!');
     }
 
     /**
@@ -72,6 +85,6 @@ class BukuController extends Controller
     {
         $buku->delete();
         return redirect()->route('bukus.index')
-        ->with('success','Buku deleted successfully');
-    }
+            ->with('success', 'Yeayy, Buku Berhasil di hapus😊!');
+}
 }
