@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\BukuStoreRequest;
 use App\Http\Requests\BukuUpdateRequest;
 
+    
 class BukuController extends Controller
 {
     /**
@@ -16,7 +17,7 @@ class BukuController extends Controller
     {
         $bukus = Buku::latest()->paginate(5);
         return view('bukus.index', compact('bukus'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -30,7 +31,7 @@ class BukuController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BukuStoreRequest $request)
     {
         $request->validate([
             'buku' => 'required|string|',
@@ -48,7 +49,8 @@ class BukuController extends Controller
             'peminjam' => $request->peminjam,
         ]);
 
-        return redirect()->route('bukus.index')->with('success', 'Buku berhasil ditambahkan!');
+        return redirect()->route('bukus.index')
+        ->with('success', 'Buku berhasil ditambahkan!');
     }
 
     /**
