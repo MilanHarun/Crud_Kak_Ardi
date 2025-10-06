@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\peminjam;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PeminjamStoreRequest extends FormRequest
@@ -24,11 +23,6 @@ class PeminjamStoreRequest extends FormRequest
     {
         return [
             'peminjam' => 'required',
-            'tanggal_pinjam' => 'required',
-            'judul_buku' => 'required',
-            'tanggal_kembali' => 'required',
-            'petugas' => 'required',
-
         ];
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\BukuStoreRequest;
 use App\Http\Requests\BukuUpdateRequest;
 
-    
+
 class BukuController extends Controller
 {
     /**
@@ -38,7 +38,6 @@ class BukuController extends Controller
             'pengarang' => 'required|string',
             'penerbit' => 'required|string',
             'kategori' => 'required|string',
-            'peminjam' => 'required|string',
         ]);
 
         Buku::create([
@@ -46,7 +45,6 @@ class BukuController extends Controller
             'pengarang' => $request->pengarang,
             'penerbit' => $request->penerbit,
             'kategori' => $request->kategori,
-            'peminjam' => $request->peminjam,
         ]);
 
         return redirect()->route('bukus.index')

@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PeminjamStoreRequest;
 use App\Http\Requests\PeminjamUpdateRequest;
 
-
 class PeminjamController extends Controller
 {
     /**
@@ -17,7 +16,7 @@ class PeminjamController extends Controller
     {
         $peminjams = peminjam::latest()->paginate(5);
         return view('peminjams.index', compact('peminjams'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
+        ->with('i', (request()->input('page', 1) - 1) *5);
     }
 
     /**
@@ -31,21 +30,30 @@ class PeminjamController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PeminjamStoreRequest $request)
-    {
+public function store(Request $request)
+{
+    $request->validate([
+        'peminjam' => 'required|string|',
+        'tglpeminjaman' => 'required|date',
+        'judulbuku' => 'required|string|',
+        'tglpengembalian' => 'required|date',
+    ]);
 
-        peminjam::create($request->validated());
-
-        return redirect()->route('peminjams.index')
-        ->with('success','peminjam created successfully.');
-    }
+Peminjam::create([
+    'peminjam' => $request->peminjam,
+    'tgl_peminjaman' => $request->tglpeminjaman,
+    'judul_buku' => $request->judulbuku,
+    'tgl_pengembalian' => $request->tglpengembalian,
+]);
+    return redirect()->route('peminjams.index')->with('success', 'Data peminjam berhasil ditambahkan!');
+}
 
     /**
      * Display the specified resource.
      */
     public function show(peminjam $peminjam)
     {
-    return view('peminjams.show', compact('peminjam'));
+        return view('peminjams.show', compact('peminjam'));
     }
 
     /**
@@ -53,7 +61,7 @@ class PeminjamController extends Controller
      */
     public function edit(peminjam $peminjam)
     {
-    return view('peminjams.edit', compact('peminjam'));
+        return vieww('peminjams.edit', compact('peminjam'));
     }
 
     /**
@@ -61,10 +69,10 @@ class PeminjamController extends Controller
      */
     public function update(PeminjamUpdateRequest $request, peminjam $peminjam)
     {
-        $request->update($request->validated());
+         $peminjam->update($request->validated());
 
         return redirect()->route('peminjams.index')
-            ->with('success', 'Data Peminjam Berhasil di ubah');
+            ->with('success', 'Yeayy, Berhasil di ubah😊!');
     }
 
     /**
@@ -72,9 +80,8 @@ class PeminjamController extends Controller
      */
     public function destroy(peminjam $peminjam)
     {
-        $peminjam->delete();
-
+         $peminjam->delete();
         return redirect()->route('peminjams.index')
-            ->with('success', 'Data Peminjam Berhasil di hapus');
+            ->with('success', 'Yeayy, Berhasil di hapus😊!');
     }
 }

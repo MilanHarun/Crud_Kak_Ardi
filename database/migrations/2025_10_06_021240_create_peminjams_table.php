@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('peminjams', function (Blueprint $table) {
             $table->id();
-            $table->string('peminjam');
-            $table->string('tanggal_pinjam');
+            $table->string('nama_peminjam');
             $table->string('judul');
-            $table->string('tanggal_kembali');
+            $table->date('tanggal_pinjam');
+            $table->date('tanggal_kembali');
             $table->string('petugas');
-            $table->timestamps();
+             $table->timestamps();
+
         });
     }
 

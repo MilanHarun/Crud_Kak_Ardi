@@ -46,10 +46,6 @@
                                             <label for="inputKategori" class="form-label"><strong>Kategori</strong></label>
                                             <input type="text" name="kategori" id="inputKategori" class="form-control @error('kategori') is-invalid @enderror">
                                         </div>
-                                         <div class="mb-3">
-                                            <label for="inputPeneribit" class="form-label"><strong>Peminjam</strong></label>
-                                            <input type="text" name="peminjam" id="inputpeminjam" class="form-control @error('peminjam') is-invalid @enderror">
-                                        </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -67,7 +63,6 @@
                                 <th>Pengarang</th>
                                 <th>Penerbit</th>
                                 <th>Kategori</th>
-                                <th>Peminjam</th>
 
                                 <th width="250px">Aksi</th>
                             </tr>
@@ -83,7 +78,6 @@
                                     <td>{{ $buku->pengarang }}</td>
                                     <td>{{ $buku->penerbit }}</td>
                                     <td>{{ $buku->kategori }}</td>
-                                    <td>{{ $buku->peminjam }}</td>
 
                                     <td>
                                         <form action="{{ route('bukus.destroy', $buku->id) }}" method="POST">

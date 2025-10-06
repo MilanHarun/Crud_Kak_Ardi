@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use\ App\Models\peminjam;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PeminjamUpdateRequest extends FormRequest
@@ -23,7 +22,7 @@ class PeminjamUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'peminjam' => 'required'
+            'peminjam' => 'required',
         ];
     }
 }
