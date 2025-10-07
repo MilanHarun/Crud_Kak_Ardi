@@ -30,20 +30,22 @@ class PeminjamController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-public function store(Request $request)
+public function store(PeminjamStoreRequest $request)
 {
     $request->validate([
-        'peminjam' => 'required|string|',
-        'tglpeminjaman' => 'required|date',
-        'judulbuku' => 'required|string|',
-        'tglpengembalian' => 'required|date',
+        'peminjam' => 'required',
+        'judul' => 'required',
+        'tanggal_pinjam' => 'required',
+        'tanggal_kembali' => 'required',
+        'petugas' => 'required',
     ]);
 
 Peminjam::create([
     'peminjam' => $request->peminjam,
-    'tgl_peminjaman' => $request->tglpeminjaman,
-    'judul_buku' => $request->judulbuku,
-    'tgl_pengembalian' => $request->tglpengembalian,
+    'tanggal_pinjam' => $request->tanggal_pinjam,
+    'judul' => $request->judul,
+    'tanggal_kembali' => $request->tanggal_kembali,
+    'petugas' => $request->petugas,
 ]);
     return redirect()->route('peminjams.index')->with('success', 'Data peminjam berhasil ditambahkan!');
 }
@@ -61,20 +63,31 @@ Peminjam::create([
      */
     public function edit(peminjam $peminjam)
     {
-        return vieww('peminjams.edit', compact('peminjam'));
+        return view('peminjams.edit', compact('peminjam'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(PeminjamUpdateRequest $request, peminjam $peminjam)
-    {
-         $peminjam->update($request->validated());
+    // Contoh di PeminjamController.php
+public function update(Request $request, Peminjam $peminjam)
+{
+    // 1. Validasi Data
+    $validatedData = $request->validate([
+        'peminjam' => 'required|max:255',
+        'tanggal_pinjam' => 'required|date',
+        'judul' => 'required|max:255',
+        'tanggal_kembali' => 'nullable|date|after_or_equal:tanggal_pinjam',
+        'petugas' => 'required|max:255',
+    ]);
 
-        return redirect()->route('peminjams.index')
-            ->with('success', 'Yeayy, Berhasil di ubah😊!');
-    }
+    // 2. Pembaruan Data
+    // Pastikan nama-nama field di $request sesuai dengan yang ada di database/model
+    $peminjam->update($validatedData); // <-- Pastikan baris ini berhasil!
 
+    // 3. Redirect ke Halaman Index
+    return redirect()->route('peminjams.index')->with('success', 'Data peminjam berhasil diubah!');
+}
     /**
      * Remove the specified resource from storage.
      */

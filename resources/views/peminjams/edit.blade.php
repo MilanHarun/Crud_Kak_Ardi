@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Edit Peminjam') }}</div>
+                <div class="card-header">{{ ('Edit Peminjam') }}</div>
 
                 <div class="card-body">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
@@ -30,8 +30,8 @@
 
                             <div class="mb-3">
                                 <label for="inputTglpeminjaman" class="form-label">Tgl Peminjaman</label>
-                                <input type="text" name="tglpeminjaman" value="{{ old('tglpeminjaman', $peminjam->tgl_peminjaman) }}" class="form-control @error('tglpeminjaman') is-invalid @enderror" id="inputTglpeminjaman" placeholder="Ubah Tgl Peminjaman">
-                                @error('tglpeminjaman')
+                                <input type="date" name="tanggal_pinjam" value="{{ old('tanggal_pinjam', $peminjam->tanggal_pinjam) }}" class="form-control @error('tanggal_pinjam') is-invalid @enderror" id="inputTanggalPinjam" placeholder="Ubah Tgl Peminjaman">
+                                @error('tanggal_pinjam')
                                     <div class="form-text text-danger">
                                         {{ $message }}
                                     </div>
@@ -39,9 +39,9 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="inputJudulbuku" class="form-label">Judul Buku</label>
-                                <input type="text" name="judulbuku" value="{{ old('judulbuku', $peminjam->judul_buku) }}" class="form-control @error('judulbuku') is-invalid @enderror" id="inputJudulbuku" placeholder="Ubah Judul Buku">
-                                @error('judulbuku')
+                                <label for="inputJudul" class="form-label">Judul Buku</label>
+                                <input type="text" name="judul" value="{{ old('judul', $peminjam->judul) }}" class="form-control @error('judul') is-invalid @enderror" id="inputJudul" placeholder="Ubah Judul Buku">
+                                @error('judul')
                                     <div class="form-text text-danger">
                                         {{ $message }}
                                     </div>
@@ -49,16 +49,26 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="inputTglpengembalian" class="form-label">Tgl Pengembalian</label>
-                                <input type="text" name="tglpengembalian" value="{{ old('tglpengembalian', $peminjam->tgl_pengembalian) }}" class="form-control @error('tglpengembalian') is-invalid @enderror" id="inputTglpengembalian" placeholder="Ubah Tgl Pengembalian">
-                                @error('tglpengembalian')
+                                <label for="inputTanggalKembali" class="form-label">Tgl Pengembalian</label>
+                                <input type="date" name="tanggal_kembali" value="{{ old('tanggal_kembali', $peminjam->tanggal_kembali) }}" class="form-control @error('tanggal_kembali') is-invalid @enderror" id="inputTanggalKembali" placeholder="Ubah Tgl Pengembalian">
+                                @error('tanggal_kembali')
                                     <div class="form-text text-danger">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
 
-                        <button type="submit" class="btn btn-success">Ubah ✅</button>
+                            <div class="mb-3">
+                                <label for="inputPetugas" class="form-label">Petugas</label>
+                                <input type="text" name="petugas" value="{{ old('petugas', $peminjam->petugas) }}" class="form-control @error('petugas') is-invalid @enderror" id="inputPetugas" placeholder="Ubah Petugas">
+                                @error('petugas')
+                                    <div class="form-text text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                        <button type="submit" class="btn btn-success">Ubah </button>
                     </form>
                 </div>
             </div>

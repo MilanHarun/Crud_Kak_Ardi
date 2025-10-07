@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
                         <a href="{{ route('bukus.index') }}" class="btn btn-primary btn-sm">
-                            🔴Back
+                            Back
                         </a>
                     </div>
                     <form action="{{ route('bukus.store') }}" method="POST">

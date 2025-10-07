@@ -59,17 +59,9 @@
                         </div>
 
 
-                        <div class="mb-3">
-                            <label for="inputPeminjam" class="form-label">Peminjam</label>
-                            <input type="text" name="peminjam" value="{{ old('peminjam', $buku->peminjam) }}" class="form-control @error('peminjam') is-invalid @enderror" id="inputPeminjam" placeholder="Ubah Peminjam">
-                            @error('peminjam')
-                                    <div class="form-text text-danger">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
 
-                        <button type="submit" class="btn btn-success">Ubah ✅</button>
+
+                        <button type="submit" class="btn btn-success">Ubah </button>
                     </form>
                 </div>
             </div>
