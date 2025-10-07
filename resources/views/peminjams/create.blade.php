@@ -20,7 +20,6 @@
                         <div class="mb-3">
                             <label for="inputPeminjam" class="form-label">Peminjam</label>
                             <input type="text" name="peminjam" value="{{ old('peminjam') }}" id="inputPeminjam" placeholder="Masukkan Peminjam">
-                        </div>
 
                          <div class="mb-3">
                             <label for="inputJudul" class="form-label">Judul buku</label>

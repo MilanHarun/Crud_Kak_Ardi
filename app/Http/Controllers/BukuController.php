@@ -75,7 +75,7 @@ class BukuController extends Controller
         $buku->update($request->validated());
 
         return redirect()->route('bukus.index')
-            ->with('success', 'Yeayy, Buku Berhasil di ubah😊!');
+            ->with('success', 'Yeayy, Buku Berhasil di ubah!');
 }
     /**
      * Remove the specified resource from storage.
