@@ -6,7 +6,7 @@ use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Http\Requests\KategoriStoreRequest;
 use App\Http\Requests\KategoriUpdateRequest;
-    
+
 
 class KategoriController extends Controller
 {
@@ -16,6 +16,7 @@ class KategoriController extends Controller
     public function index()
     {
         $kategoris = Kategori::latest()->paginate(5);
+        $categories = Kategori::pluck('kategori', 'id');
         return view('kategoris.index',compact('kategoris'))
         ->with( (request()->input('page', 1) - 2) * 5);
     }

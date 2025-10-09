@@ -1,22 +1,42 @@
+/* 1. CSS Kustom Anda untuk Gradien Kolom Kanan dan Tombol Login */
 .gradient-custom-2 {
-/* fallback for old browsers */
-background: #fccb90;
-
-/* Chrome 10-25, Safari 5.1-6 */
-background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-
-/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  /* Gradien yang sudah Anda miliki untuk kolom kanan */
+  background: #fccb90;
+  background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
 }
 
-@media (min-width: 768px) {
-.gradient-form {
-height: 100vh !important;
+/* 2. BARU: CSS untuk Latar Belakang Gelap Kolom Kiri */
+/* Kita targetkan kolom kiri agar berwarna gelap */
+.login-panel-dark {
+    background-color: #212529; /* Warna hitam gelap */
+    color: white; /* Agar teks di dalamnya putih */
+    padding: 4rem; /* Sesuaikan padding agar terlihat bagus */
 }
+
+/* 3. BARU: Gaya untuk Elemen Formulir di Kolom Gelap */
+/* Ini penting agar input field dan teks terlihat di latar belakang gelap */
+.login-panel-dark p, .login-panel-dark h2 {
+    color: #ffffff;
 }
-@media (min-width: 769px) {
-.gradient-custom-2 {
-border-top-right-radius: .3rem;
-border-bottom-right-radius: .3rem;
+
+.login-panel-dark .form-control {
+    background-color: rgba(255, 255, 255, 0.1); /* Input field agak transparan */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white; /* Teks di dalam input field putih */
 }
+
+.login-panel-dark .form-label {
+    color: rgba(255, 255, 255, 0.7); /* Label teks agak abu-abu */
+}
+
+/* Mengubah warna teks 'Don't have an account' */
+.login-panel-dark .d-flex p {
+    color: white !important;
+}
+
+/* Mengubah warna tombol 'CREATE NEW' */
+.login-panel-dark .btn-outline-danger {
+    color: #b44593; /* Warna pink/ungu dari gradien */
+    border-color: #b44593;
 }

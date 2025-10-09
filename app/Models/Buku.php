@@ -13,4 +13,9 @@ class Buku extends Model
         'kategori',
         'peminjam'
     ];
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class, 'kategori');
+    }
 }

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ ('Dashboard') }}</div>
+                <div class="card-header">{{ ('Daftar Buku ') }}</div>
 
                 <div class="card-body">
 
@@ -27,7 +27,7 @@
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Buku</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                
+
                                 <div class="modal-body">
                                     <form action="{{ route ('bukus.store') }}" method="POST">
                                         @csrf
@@ -87,7 +87,6 @@
 
                                     <td>
                                         <form action="{{ route('bukus.destroy', $buku->id) }}" method="POST">
-                                            <a href="{{ route('bukus.show', $buku->id) }}" class="btn btn-info btn-sm">Lihat</a>
                                             <a href="{{ route('bukus.edit', $buku->id) }}" class="btn btn-warning btn-sm">Ubah</a>
                                             @csrf
                                             @method('DELETE')

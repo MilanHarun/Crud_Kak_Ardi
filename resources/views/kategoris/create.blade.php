@@ -20,8 +20,14 @@
                         @csrf
 
                         <div class="mb-3">
-                         <label for="inputKategori" class="form-label">kategori</label>
-                        <input for="text" name="kategori" class="form-control @error('kategori') is-invalid @enderror" id="inputKategori" placeholder="Masukkan kategori">
+                                <label for="kategori" class="form-label">Kategori</label>
+                               <select name="kategori" class="form-control" required>
+                                <option value="">-- Pilih Kategori --</option>
+                                @foreach($categories as $id => $kategori)
+                                    <option value="{{ $id }}">{{ $kategori }}</option>
+                                @endforeach
+                            </select>
+                            </div>
 
                         @error('kategori')
                         <div class="form-text text-danger"> {{$message}} </div>

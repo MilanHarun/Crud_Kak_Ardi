@@ -12,4 +12,9 @@ class Datapeminjam extends Model
         'no_telp',
         'jk'
     ];
+
+     public function peminjams()
+    {
+        return $this->hasMany(peminjam::class, 'datapeminjams');
+    }
 }

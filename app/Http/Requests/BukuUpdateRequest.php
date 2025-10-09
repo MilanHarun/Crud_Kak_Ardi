@@ -26,7 +26,7 @@ class BukuUpdateRequest extends FormRequest
             'pengarang' => 'required',
             'penerbit' => 'required',
             'kategori' => 'required',
-            'peminjam' => 'required',
+            
         ];
     }
 }

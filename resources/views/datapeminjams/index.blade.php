@@ -48,7 +48,6 @@
                                     <td>{{ $datapeminjam->no_telp }}</td>
                                     <td>{{ $datapeminjam->jk }}</td>
                                     <td>   <form action="{{ route('datapeminjams.destroy', $datapeminjam->id) }}" method="POST">
-                                            <a href="{{ route('datapeminjams.show', $datapeminjam->id) }}" class="btn btn-info btn-sm">Lihat</a>
                                             <a href="{{ route('datapeminjams.edit', $datapeminjam->id) }}" class="btn btn-warning btn-sm">Ubah</a>
                                             @csrf
                                             @method('DELETE')

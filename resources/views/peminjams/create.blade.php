@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -14,33 +13,79 @@
                             Back
                         </a>
                     </div>
+
+                    <!-- Form akan mengirim data ke PeminjamController@store -->
                     <form action="{{ route('peminjams.store') }}" method="POST">
                         @csrf
 
+                        <!-- Pilihan Peminjam -->
                         <div class="mb-3">
-                            <label for="inputPeminjam" class="form-label">Peminjam</label>
-                            <input type="text" name="peminjam" value="{{ old('peminjam') }}" id="inputPeminjam" placeholder="Masukkan Peminjam">
+                            <label for="inputPeminjam" class="form-label">Pilih Peminjam</label>
+                            <select name="peminjam" id="inputPeminjam" class="form-control @error('peminjam') is-invalid @enderror">
+                                <option value="">-- Pilih Peminjam --</option>
 
-                         <div class="mb-3">
-                            <label for="inputJudul" class="form-label">Judul buku</label>
-                            <input type="text" name="judul" value="{{ old('judul') }}" id="inputJudul" placeholder="Masukkan Judul Buku">
+                                <!-- Variabel $daftarPeminjam berisi [id => nama_peminjam] -->
+                                @foreach ($daftarPeminjam as $id => $peminjam)
+                                   <option value="{{ $id }}" {{ old('peminjam') == $id ? 'selected' : '' }}>
+                                       {{ $peminjam }}
+                                   </option>
+                                @endforeach
+                            </select>
+                            @error('peminjam')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
 
+                        <!-- Pilihan Buku -->
+                        <div class="mb-3">
+                            <label for="inputBuku" class="form-label">Pilih Buku</label>
+                            <select name="buku" id="inputBuku" class="form-control @error('buku') is-invalid @enderror">
+                                <option value="">-- Pilih Buku --</option>
+
+                                <!-- Variabel $daftarBuku berisi [id => buku] -->
+                                @foreach ($daftarBuku as $id => $buku)
+                                   <option value="{{ $id }}" {{ old('buku') == $id ? 'selected' : '' }}>
+                                       {{ $buku }}
+                                   </option>
+                                @endforeach
+                            </select>
+                            @error('buku')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- Tanggal Peminjaman -->
                         <div class="mb-3">
                             <label for="inputTanggalPinjam" class="form-label">Tgl Peminjaman</label>
-                            <input type="date" name="tanggal_pinjam" value="{{ old('tanggal_pinjam') }}" id="inputTanggalPinjam" placeholder="Masukkan Tanggal Pinjam ">
+                            <input type="date" name="tanggal_pinjam"
+                                value="{{ old('tanggal_pinjam', \Carbon\Carbon::now()->format('Y-m-d')) }}"
+                                required id="inputTanggalPinjam" class="form-control @error('tanggal_pinjam') is-invalid @enderror">
+                            @error('tanggal_pinjam')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
 
+                        <!-- Tanggal Pengembalian -->
                         <div class="mb-3">
                             <label for="inputTanggalKembali" class="form-label">Tgl Pengembalian</label>
-                            <input type="date" name="tanggal_kembali" value="{{ old('tanggal_kembali') }}" id="inputTanggalKembali" placeholder="Masukkan Tgl kembali">
+                            <input type="date" name="tanggal_kembali"
+                                value="{{ old('tanggal_kembali') }}"
+                                id="inputTanggalKembali" class="form-control @error('tanggal_kembali') is-invalid @enderror">
+                            @error('tanggal_kembali')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
 
-                         <div class="mb-3">
+                        <!-- Petugas -->
+                        <div class="mb-3">
                             <label for="inputPetugas" class="form-label">Petugas</label>
-                            <input type="text" name="petugas" value="{{ old('petugas') }}" id="inputPetugas" placeholder="Masukkan Petugas">
+                            <input type="text" name="petugas"
+                                value="{{ old('petugas') }}"
+                                id="inputPetugas" placeholder="Masukkan Petugas" class="form-control @error('petugas') is-invalid @enderror">
+                            @error('petugas')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
-
 
                         <button type="submit" class="btn btn-success">Tambah</button>
                     </form>

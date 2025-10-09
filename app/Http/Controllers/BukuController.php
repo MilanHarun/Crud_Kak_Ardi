@@ -16,6 +16,7 @@ class BukuController extends Controller
     public function index()
     {
         $bukus = Buku::latest()->paginate(5);
+        $categories = Buku::pluck('buku', 'id');
         return view('bukus.index', compact('bukus'))
          ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -25,6 +26,7 @@ class BukuController extends Controller
      */
     public function create()
     {
+         $categories = Buku::pluck('buku', 'id');
         return view('bukus.create');
     }
 
@@ -64,6 +66,7 @@ class BukuController extends Controller
      */
    public function edit(Buku $buku)
     {
+         $categories = Buku::pluck('buku', 'id');
         return view('bukus.edit', compact('buku'));
     }
 

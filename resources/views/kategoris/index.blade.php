@@ -52,9 +52,9 @@
                     <table class="table table-bordered table-striped mt-4">
                     <thead>
                         <tr>
-                            <th width="80px">No</th>
+                            <th width="100px">No</th>
                             <th>Kategori</th>
-                            <th width="250px">Action</th>
+                            <th width="200px">Action</th>
 
                         </tr>
 
@@ -69,7 +69,6 @@
                             <td>{{ $kategori->kategori }}</td>
                             <td>
                                 <form action="{{ route('kategoris.destroy',$kategori->id) }}" method="POST">
-                                    <a href="{{ route('kategoris.show',$kategori->id) }}" class="btn btn-info btn-sm">Show</a>
                                     <a href="{{ route('kategoris.edit',$kategori->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                     @csrf
                                     @method('DELETE')
